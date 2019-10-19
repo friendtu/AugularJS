@@ -24,8 +24,18 @@
 
             <div>
                 <input type='password' name='pwd'  class='pwd' ng-model="ctrl.user.password" required >
-                <span ng-show="myForm.pwd.$error.required">This is a required field</span>
+                <span ng-show="myForm.pwd.$error.required && myForm.pwd.$dirty">This is a required field</span>
             </div>
+
+            <div>
+                <ng-form name="profile" class="profile">
+                    <input type="text" name="firstName" ng-model="ctrl.user.profile.firstName" placeholder="First Name" required>
+                    <input type="text" name="middleName" ng-model="ctrl.user.profile.middleName" placeholder="Middle Name">
+                    <input type="text" name="lastName" ng-model="ctrl.user.profile.lastName" placeholder="Last Name" required> 
+                </ng-form>
+                <span ng-show="profile.$invalid && profile.$dirty">Please fill out the profile informaton</span>
+            </div>
+
             <div>
                 <input type="submit" value="Submit"  ng-disabled="myForm.$invalid">
             </div>
