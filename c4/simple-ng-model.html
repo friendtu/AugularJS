@@ -31,8 +31,11 @@
                 <ng-form name="profile" class="profile">
                     <input type="text" name="firstName" ng-model="ctrl.user.profile.firstName" placeholder="First Name" required>
                     <input type="text" name="middleName" ng-model="ctrl.user.profile.middleName" placeholder="Middle Name">
-                    <input type="text" name="lastName" ng-model="ctrl.user.profile.lastName" placeholder="Last Name" required> 
+                    <input type="text" name="lastName" ng-model="ctrl.user.profile.lastName" placeholder="Last Name" required>
+                    <input type="checkbox" ng-model="ctrl.user.agree" >agree</input>
                 </ng-form>
+                name: {{ctrl.user.username}}
+                Agree: {{ctrl.user.agree}}
                 <span ng-show="profile.$invalid && profile.$dirty">Please fill out the profile informaton</span>
             </div>
 

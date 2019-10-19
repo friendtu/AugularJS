@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html ng-app='noteapp'>
+<head>
+    <title>Notes App</title>
+</head>
+<body ng-controller="MainCtrl as ctrl">
+    <div ng-init="otherGender='other';user={gender:'female'}">
+        <input type='radio' name='gender' ng-model='user.gender' value='male'>Male
+        <input type='radio' name='gender' ng-model='user.gender' value='female'>Female
+        <input type='radio' name='gender' ng-model='user.gender' ng-value='otherGender'>{{otherGender}}
+
+    </div>
+
+    <div ng-init="ctrl.location='India'">
+        <select ng-model="ctrl.location">
+            <option value="USA">USA</option>
+            <option value="India">India</option>
+            <option value="Other">None of the above</option>
+        </select>
+        {{ctrl.location}}
+    </div>
+
+    <div>
+        <select ng-model="ctrl.selectedId" ng-options="c.id as c.label group by c.type for c in ctrl.sports"></select>
+        {{ctrl.selectedId}}
+    </div>
+
+    <div>
+        <select ng-model="ctrl.selectedSport" ng-options="c.label for c in ctrl.sports"></select>
+        {{ctrl.selectedSport}}
+    </div>
+
+    <div ng-repeat="sport in ctrl.sports"> 
+        <label > {{sport.label}}  </label>
+        <div>
+            With binding:
+            <input type="checkbox"
+                ng-model="sport.selected"
+                ng-true-value="YES"
+                ng-false-value="NO">   
+        </div>
+        <div>
+            Using ng-checked:
+            <input type="checkbox" ng-checked="sport.selected==='YES'" >
+        </div>
+            Current state: {{sport.selected}}
+
+
+
+    </div>
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js"></script>
+    <script type="text/javascript">
+        angular.module('noteapp',[])
+            .controller('MainCtrl',[function() {
+                var self=this
+                self.sports=[
+                    {id:1,label:'First Note',selected:'YES',type:"water"},
+                    {id:2,label:'Second Note',selected:'NO',type:"ball"},
+                    {id:3,label:'Done Note',selected:'YES',type:'ball'},
+                    {id:4,label:'Last Note',selected:'NO',type:'water'}   
+                ];
+                self.selectedId=self.sports[0].id;
+                self.selectedSport=self.sports[1];
+
+            }]);
+    </script>
+</body>
+</html>
