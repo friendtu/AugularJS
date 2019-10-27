@@ -1,9 +1,10 @@
 angular.module("notesApp",[])
-    .controller('MainCtrl',[function(){
+    .controller('MainCtrl',['$log',function($log){
         var self=this;
         self.tab="first";
         self.open=function(tab){
             self.tab=tab;
+            $log.log("Button is clicked.")
         };
     }])
     .controller('SubCtrl',[function(){
