@@ -7,17 +7,30 @@ angular.module("notesApp",[])
             $log.log("Button is clicked.")
         };
     }])
-    .controller('SubCtrl',[function(){
+    .controller('SubCtrl',['ItemService',function(ItemService){
         var self=this;
-        self.list=[
+        self.list=function(){
+            return ItemService.list();
+        };
+
+        self.add=function(){
+            ItemService.add({
+                id:self.list().length+1,
+                label:'Item '+self.list().length
+            });
+        };
+    }])
+    .factory('ItemService',[function(){
+        var items=[
             {id:1,label:'Item 0'},
             {id:2,label:'Item 1'}
         ];
-
-        self.add=function(){
-            self.list.push({
-                id:self.list.length+1,
-                label:'Item '+self.list.length
-            });
+        return {
+            list:function(){
+                return items;
+            },
+            add:function(item) {
+                items.push(item);
+            }
         };
     }]);
