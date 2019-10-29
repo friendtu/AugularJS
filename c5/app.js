@@ -1,10 +1,23 @@
+function MainService(){
+    var items=[
+        {id:1,label:'Item 0'},
+        {id:2,label:'Item 1'}
+    ];
+    this.list=function(){
+            return items;
+        };
+    this.add=function(item) {
+            items.push(item);
+        };
+}
+
 angular.module("notesApp",[])
-    .controller('MainCtrl',['$log',function($log){
+    .controller('MainCtrl',['$log','MainService',function($log,MainService){
         var self=this;
         self.tab="first";
         self.open=function(tab){
             self.tab=tab;
-            $log.log("Button is clicked.")
+            $log.log(MainService.list())
         };
     }])
     .controller('SubCtrl',['ItemService',function(ItemService){
@@ -20,6 +33,7 @@ angular.module("notesApp",[])
             });
         };
     }])
+    .service('MainService',[MainService])
     .factory('ItemService',[function(){
         var items=[
             {id:1,label:'Item 0'},
