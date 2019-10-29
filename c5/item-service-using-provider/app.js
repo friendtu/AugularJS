@@ -38,7 +38,7 @@ angular.module("notesApp",[])
             haveDefaultItems=false;
         };
 
-        this.$get=[function(){
+        this.$get=function(){
             var optItems=[];
             if(haveDefaultItems) {
                 optItems=[
@@ -47,7 +47,7 @@ angular.module("notesApp",[])
                 ];
             }
             return new ItemService(optItems);
-        }];
+        };
     })
     .config(['ItemServiceProvider',function(ItemServiceProdiver){
         var shouldHaveDefaults=false;
