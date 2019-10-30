@@ -15,18 +15,55 @@
         </div>
         <div>- by <span ng-bind="todo.author"></span></div>
     </div>
+    <div id="doggyplayground"></div>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js"></script>
     <script>
         angular.module('notesApp',[])
             .controller('MainCtrl',['$http',function($http){
                 var self=this;
                 self.items=[];
-                $http.get("/api/note").then(function(response){
-                    self.items=response.data;
-                },function(errResponse) {
-                    console.error('Error while fetching notes');
-                });
+                $http.get("/api/note")
+                    .then(function(response){
+                        self.items=response.data;
+                    })
+                    .catch(function(errResponse) {
+                        console.error('Error while fetching notes');
+                    });
             }]);
+    </script>
+    <script type="text/javascript">
+        var doggyplayground=document.getElementById("doggyplayground")
+        var images=['dog1.png', 'dog2.png', 'dog3.png', 'dog4.png', 'dog5.png']
+
+        function getImage(url) {
+            return new Promise(function(resolve,reject){
+                var img=new Image()
+                img.onload=function (){
+                    resolve(url)
+                }
+                img.onerror=function(){
+                    reject(url)
+                }
+                img.src=url
+            })
+        }
+
+        function displayImages(images) {
+            var image=images.shift()
+            if(image) {
+                getImage(image).then(function(url){
+                    var dog=document.createElement('img')
+                    dog.setAttribute('src',url)
+                    doggyplayground.appendChild(dog)
+                    displayImages(images)
+                }).catch(function(url){
+                    console.log("Error loading "+url)
+                    displayImages(images)             
+                })
+            }
+        }
+
+        displayImages(images)
     </script>
 </body>
 </html>
