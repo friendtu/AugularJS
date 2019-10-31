@@ -29,6 +29,30 @@
                     .catch(function(errResponse) {
                         console.error('Error while fetching notes');
                     });
+            }])
+            .factory('MyLoggingInterceptor',['$q',function($q){
+                return {
+                    'request':function(config) {
+                        console.log('Request made with',config);
+                        return config;
+                    },
+                    'requestError':function(rejection) {
+                        console.log('Request error due to',rejection);
+                        return $q.reject(rejection);
+
+                    },
+                    'response':function(response) {
+                        console.log('Response from server',response);
+                        return response||$q.when(response);
+                    },
+                    'responseError':function(){
+                        console.log('Error in response',rejection);
+                        return $q.reject(rejection);
+                    }
+                };
+            }])
+            .config(['$httpProvider',function($httpProvider){
+                $httpProvider.interceptors.push('MyLoggingInterceptor');
             }]);
     </script>
     <script type="text/javascript">
