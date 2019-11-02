@@ -1,0 +1,9 @@
+{
+  "name": "angularjs-chapter6-server",
+  "main": "controller.js",
+  "dependencies": {
+    "karma": "~4.0.0",
+    "karma-jasmine": "~2.0.0",
+    "karma-chrome-launcher": "~3.0.0"
+  }
+}
