@@ -1,5 +1,5 @@
 // Karma configuration
-// Generated on Wed Oct 16 2019 10:43:58 GMT+0800 (China Standard Time)
+// Generated on Sat Nov 02 2019 15:07:31 GMT+0800 (GMT+08:00)
 
 module.exports = function(config) {
   config.set({
@@ -15,11 +15,10 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'angular.js', 
+      'angular.js',
       'angular-mocks.js',
-      '.\\c3\\controller.js',
-      '.\\c3\\controllerSpec.js',
-      'jasmine.js'
+      'simple*.js',
+      'notesApp*.js'
     ],
 
 
