@@ -4,7 +4,9 @@ describe('ItemCtrl with spies',function(){
     var ctrl,itemService;
 
     beforeEach(inject(function($controller,ItemService){
-        spyOn(ItemService,'list').and.callThrough();
+        spyOn(ItemService,'list').and.returnValue([
+            {id:1,label:'Item 0'}        
+        ]); //callThrough();
         itemService=ItemService;
         ctrl=$controller('ItemCtrl');
 
@@ -14,8 +16,7 @@ describe('ItemCtrl with spies',function(){
         expect(itemService.list).toHaveBeenCalled();
         expect(itemService.list.calls.count()).toEqual(1);
         expect(ctrl.items).toEqual([
-            {id:1,label:'Item 0'},
-            {id:2, label:'Item 1'} 
+            {id:1,label:'Item 0'}
         ]);
     });
 });
