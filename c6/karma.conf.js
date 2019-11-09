@@ -18,7 +18,8 @@ module.exports = function(config) {
       'angular.js',
       'angular-mocks.js',
       'simple*.js',
-      'notesApp*.js'
+      'notesApp*.js',
+      'product*.js'
     ],
 
 
