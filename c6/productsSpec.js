@@ -1,15 +1,16 @@
 describe('Products category service',function() {
     beforeEach(angular.mock.module('products'));
+    beforeEach(angular.mock.module({
+        'CategoryService':{
+            getCategories:function() {
+                return {1:"Electrioncs"};
+            }
+        }
+    }));
 
     it('Should return the expected categories',function(){
         //angular.mock.module('products');
-        angular.mock.module({
-            'CategoryService':{
-                getCategories:function() {
-                    return {1:"Electrioncs"};
-                }
-            }
-        });
+
 
         var service;
 
