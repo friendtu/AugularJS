@@ -21,6 +21,12 @@ angular.module('products')
                 return products;
             }
         };
+    })
+    .controller('ProductsController',function($scope,ProductsService){
+        $scope.products=[];
+        $scope.load=function(){
+            $scope.products=ProductsService.getProducts();    
+        };
     });
 
 
