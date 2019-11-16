@@ -1,12 +1,15 @@
-describe('ItemCtrl with global mock', function(){
-    var ctrl;
+describe("notesApp1",function(){
     beforeEach(module('notesApp1'));
     beforeEach(module('notesApp1Mocks'));
-    beforeEach(inject(function($controller) {
+
+    var ctrl;
+    var mockItemService;
+    
+    beforeEach(inject(function($controller){
         ctrl=$controller('ItemCtrl');
     }));
 
-    it('Should load mocked out items',function() {
+    it('should load mocked out items',function(){
         expect(ctrl.items).toEqual([{id:1,label:'Mock'}]);
     });
 });

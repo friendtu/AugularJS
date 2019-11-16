@@ -1,15 +1,12 @@
-describe('ItemCtrl wiht inline mock',function(){
+describe('ItemCtrl with inline mock',function(){
     beforeEach(module('notesApp1'));
     var ctrl,mockService;
-    beforeEach(module(function($provide) {
-        mockService= {
+    beforeEach(module({
+        ItemService:{
             list:function() {
                 return [{id:1,label:'Mock'}];
             }
-        };
-
-        $provide.value('ItemService',mockService);
-    }));
+    }}));
 
     beforeEach(inject(function($controller){
         ctrl=$controller('ItemCtrl');
