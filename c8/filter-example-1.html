@@ -1,0 +1,71 @@
+<html>
+<head>
+    <title>Filters in Action</title>
+</head>
+<body ng-app='filterApp'>
+
+    <div ng-controller='FilterCtrl as ctrl'>
+        <div>
+            Amount as a number: {{ctrl.amount|number:0}}
+        </div>
+        <div>
+            Total Cost as currency: {{ctrl.totalCost|currency}}
+        </div>
+        <div>
+            Total Cost in INR: {{ctrl.totalCost|currency:'CNY'}}
+        </div>
+        <div>
+            The JSON Filter: {{ctrl.obj|json}}
+        </div>
+        <div>
+            Shouting the name: {{ctrl.name|uppercase|limitTo:5}}
+        </div>
+        <div>
+            Start time: {{ctrl.startTime|date: 'MMM/dd, yyyy'}}
+        </div>
+
+
+        <pre>Sorting predicate = {{ctrl.predicate}}; reverse = {{reverse}}</pre>
+        <hr/>
+        [ <a href="" ng-click="predicate=''">unsorted</a> ]
+        <table class="friend">
+            <tr>
+                <th><a href="" ng-click="predicate = 'name'; reverse=false">Name</a>
+                        (<a href="" ng-click="predicate = '-name'; reverse=false">^</a>)</th>
+                <th><a href="" ng-click="predicate = 'phone'; reverse=!reverse">Phone Number</a></th>
+                <th><a href="" ng-click="predicate = 'age'; reverse=!reverse">Age</a></th>
+            </tr>
+            <tr ng-repeat="friend in ctrl.friends | orderBy:predicate:reverse">
+                <td>{{friend.name}}</td>
+                <td>{{friend.phone}}</td>
+                <td>{{friend.age}}</td>
+            </tr>
+         </table>
+
+
+
+    </div>
+
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js'>
+    </script>
+    <script type='text/javascript'>
+        angular.module('filterApp',[])
+            .controller('FilterCtrl',[function($scope){
+                this.amount=1024;
+                this.totalCost=4906;
+                this.name="Shyam Seee";
+                this.obj={test:'value',num:123};
+                this.startTime=new Date().getTime();
+                this.friends=
+                    [{name:'John', phone:'555-1212', age:10},
+                    {name:'Mary', phone:'555-9876', age:19},
+                    {name:'Mike', phone:'555-4321', age:21},
+                    {name:'Adam', phone:'555-5678', age:35},
+                    {name:'Julie', phone:'555-8765', age:29}];
+                this.predicate='-name';
+            }]);
+    </script>
+</body>
+
+
+</html>
