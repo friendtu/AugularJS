@@ -28,7 +28,7 @@
 
 <script type="text/javascript">
     angular.module("filterApp",[])
-        .controller('FilterCtrl',[function(){
+        .controller('FilterCtrl',['filterFilter',function(filterFilter){
             this.notes=[
                 {label: 'FC Todo', type: 'chore', done: false},
                 {label: 'FT Todo', type: 'task', done: false},        
@@ -40,6 +40,8 @@
                 {label: 'TT Todo', type: 'task', done: false},        
                 {label: 'TF Todo', type: 'fun', done: false}    
             ];
+
+            this.notes=filterFilter(this.notes,"C");
 
             this.filterOptions={
                 "string":'',
