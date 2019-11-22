@@ -1,4 +1,4 @@
-angular.module('filtersApp',[])
+angular.module('filterApp',[])
 .controller('FilterCtrl',[function(){
     this.startTime=new Date().getTime();
     this.someTimeAgo=this.startTime-(1000*60*60*4);
