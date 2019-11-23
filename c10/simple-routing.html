@@ -9,12 +9,16 @@
     <ul>
         <li><a href='#/'>Default Route</a></li>
         <li><a href='#/second'>Second Route</a></li>
-        <li><a href='#/controller'>controller example</a> </li>
+        <li><a href='#/inlinecontroller'>inlinecontroller example</a> </li>
+        <li><a href='#/controller'>controller example</a></li>
         <li><a href='#/aba'>Nonexistient Route</a></li>
         <li><a href='#/redirect'>Redirect to second</a></li>
         <li><a href='#/protected'>Protected</a></li>
     </ul>
-    <div ng-view></div>
+    <div ng-view>
+        
+    </div>
+
 
 
     <script type="text/javascript">
@@ -28,10 +32,21 @@
                     template: '<h5>This is the second route</h5>'
                 })
                 .when('/controller',{
-                    controller: ['$window','$log','immediate',function($window,$log,immediate){
-                        //$window.alert('The route has been routed.');
-                        $log.log("Immediate is",immediate);
-                    }]
+                    controller:'subCtrl as myCtrl',
+                    template:'<button ng-click="myCtrl.mylog()"> log in controller</button>'
+                })
+                .when('/inlinecontroller',{
+                   
+                    controller:  ['$window','$log','Constant',function($window,$log,Constant){
+                        this.mylog=function(){
+                            $window.alert('The route has been routed.');
+                            $log.log("inline ctrol: Constant is",Constant.MAGIC_NUMBER, new Date());
+                        };
+                    }],
+                    controllerAs:'inlineCtrl',
+                    template:'<button ng-click="inlineCtrl.mylog()"> Log of inlineCtrl</button>'
+
+                    //controller:'subCtrl'
                 })
                 .when('/redirect', {
                     redirectTo:'/second'
@@ -49,9 +64,14 @@
                 })
                 .otherwise({redirectTo:'/'});
             }])
-            .controller('$log','immediate',function($log,immediate){
-                $log.log("Immediate is ",immediate);
-            });
+            .controller('subCtrl',['$log','Constant',function(_$log_,Constant){
+                //$log.log("Constant is ",new Date(),Constant);
+                var $log=_$log_
+                this.value=Constant.MAGIC_NUMBER;
+                this.mylog=function(){
+                    $log.log("button is clicked at", new Date());
+                };
+            }]);
     </script>
 </body>
 </html>
