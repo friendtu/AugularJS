@@ -56,11 +56,15 @@
                     resolve: {
                         immediate:['Constant',function(Constant){
                             return Constant.MAGIC_NUMBER*2;
-                        }],
-                        async:['$http',function($http){
-                            return $http.get('/api/getAccess')
-                        }]
-                    }
+                        }]//,
+                       // async:['$http',function($http){
+                       //     return $http.get('/api/getAccess');
+                       // }]
+                    },
+                    controller:['$log','immediate',function($log,immediate){
+                        $log.log("Immediate is ",immediate);
+                        //$log.log("Server returned for async",async);
+                    }]
                 })
                 .otherwise({redirectTo:'/'});
             }])
