@@ -14,6 +14,7 @@
         <li><a href='#/aba'>Nonexistient Route</a></li>
         <li><a href='#/redirect'>Redirect to second</a></li>
         <li><a href='#/protected'>Protected</a></li>
+        <li><a href='#/detail/1/?q=12'>detail #1</a></li>
     </ul>
     <div ng-view>
         
@@ -65,6 +66,14 @@
                         $log.log("Immediate is ",immediate);
                         //$log.log("Server returned for async",async);
                     }]
+                })
+                .when('/detail/:id',{
+                    template:'<h2>Loaded {{myCtrl.detailId}} and query string is {{myCtrl.qStr}}</h2>',
+                    controller:['$routeParams',function($routeParams){
+                        this.detailId=$routeParams.id;
+                        this.qStr=$routeParams.q;
+                    }],
+                    controllerAs:'myCtrl'
                 })
                 .otherwise({redirectTo:'/'});
             }])
