@@ -1,5 +1,5 @@
 
-Angular.module('fifaApp')
+angular.module('fifaApp')
 .factory('FifaService',['$http',function($http){
     return {
         getTeams: function(){
@@ -18,6 +18,9 @@ Angular.module('fifaApp')
             return $http.get('/api/session').then(function(response){
                 self.isLoggedIn=true;
                 return response;
+            },function(error){
+                self.isLoggedIn=false;
+
             });
         },
         login:function(user){
@@ -26,7 +29,6 @@ Angular.module('fifaApp')
                     self.isLoggin=true;
                     return response;
                 });
-            },
-        }
-    }]
-);
+        },
+    }
+}]);

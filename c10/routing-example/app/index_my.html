@@ -2,7 +2,7 @@
 <head>
     <title>FIFA Teams</title>
     <link rel="stylesheet" href="styles/bootstrap.css">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="styles/main.css">
 </head>
 <body ng-app="fifaApp" class="landing">
     <div class="top-bar" ng-controller="MainCtrl as mainCtrl">
@@ -10,14 +10,20 @@
             <span><a href="#/">FIFA TEAMS</a></span>
         </div>
         <div class="pull-right">
-            <span>
+            <span ng-hide='mainCtrl.userService.isLoggedIn'>
                 <a href="#/login">Login</a>
             </span>
-            <span>
+            <span ng-show='mainCtrl.userService.isLoggedIn'>
                 <a href="/api/logout">Logout</a>
             </span>
         </div>
     </div>
+    <div ng-view></div>
 
+    <script src='scripts/vendors/jquery-1.11.1.js'></script>
+    <script src='scripts/vendors/angular.js'></script>
+    <script src='scripts/vendors/angular-route.js'></script>
+    <script src='scripts/controllers_my.js'></script>
+    <script src='scripts/services_my.js'></script>
 </body>
 </html>
