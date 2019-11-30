@@ -1,12 +1,15 @@
-angular.module('fifaApp',['ngRoute'])
+angular.module('fifaApp')
 .controller('MainCtrl',['UserService',function(UserService){
     var self=this;
     self.userService=UserService;
-    UserService.session();
+    //UserService.session();
 }])
-.controller('LoginCtrl',['UserService','$location',function(UserService,$location){
+
+.controller('LoginCtrl',['UserService','$location','$log',function(UserService,$location,$log){
     self.user={username:'',password:''};
+    //self.$log=$log;
     self.login=function(){
+        $log.log("user:",self.user);
         UserService.login(self.user).then(function(success){
             $location.path('/team');
         },function(error){
