@@ -4,6 +4,15 @@ angular.module('fifaApp')
     self.userService=UserService;
     //UserService.session();
 }])
+.controller('TeamListCtrl',['FifaService',function(FifaService){
+    var self=this;
+    self.teams=[];
+
+    FifaService.getTeams().then(function(response){
+        self.teams=response.data;
+    });
+
+}])
 
 .controller('LoginCtrl',['UserService','$location','$log',function(UserService,$location,$log){
     self=this;
