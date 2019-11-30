@@ -6,10 +6,12 @@ angular.module('fifaApp')
 }])
 
 .controller('LoginCtrl',['UserService','$location','$log',function(UserService,$location,$log){
+    self=this;
     self.user={username:'',password:''};
-    //self.$log=$log;
+    self.$log=$log;
+    //self.errorMessage="initial wrong";
     self.login=function(){
-        $log.log("user:",self.user);
+        //self.$log.log("user:",self.user);
         UserService.login(self.user).then(function(success){
             $location.path('/team');
         },function(error){
