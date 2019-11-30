@@ -2,7 +2,7 @@ angular.module('fifaApp')
 .controller('MainCtrl',['UserService',function(UserService){
     var self=this;
     self.userService=UserService;
-    //UserService.session();
+    UserService.session();
 }])
 .controller('TeamListCtrl',['FifaService',function(FifaService){
     var self=this;
