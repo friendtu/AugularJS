@@ -13,7 +13,16 @@ angular.module('fifaApp')
     });
 
 }])
-
+.controller('TeamDetailsCtrl',['$location','$routeParams','FifaService',function($location,$routeParams,FifaService){
+    var self=this;
+    self.team={};
+    FifaService.getTeamDetails($routeParams.code)
+        .then(function(resp){
+            self.team=resp.data;
+        },function(error){
+            $location.path('/login');
+        });
+}])
 .controller('LoginCtrl',['UserService','$location','$log',function(UserService,$location,$log){
     self=this;
     self.user={username:'',password:''};

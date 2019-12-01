@@ -7,6 +7,10 @@ angular.module('fifaApp',['ngRoute'])
         templateUrl:'views/team_list_my.html',
         controller:'TeamListCtrl as teamListCtrl'
     })
+    .when('/team/:code',{
+        templateUrl:'views/team_details_my.html',
+        controller:'TeamDetailsCtrl as teamDetailsCtrl'
+    })
     .otherwise({
         redirectTo:'/'
     });

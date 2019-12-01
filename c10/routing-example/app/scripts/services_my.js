@@ -5,7 +5,7 @@ angular.module('fifaApp')
             getTeams: function(){
                 return $http.get('/api/team');
             },
-            getTeamDetail:function(code){
+            getTeamDetails:function(code){
                 return $http.get('/api/team/'+code);
             }
         };
