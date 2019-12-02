@@ -15,7 +15,7 @@ angular.module('fifaApp',['ngRoute'])
                 return UserService.session().then(
                     function(success){},
                     function(err){
-                        $location.path('/login');
+                        $location.path('#/login');
                         $location.replace();
                         return $q.reject(err);
                     });

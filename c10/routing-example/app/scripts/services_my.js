@@ -12,24 +12,24 @@ angular.module('fifaApp')
     }])
 
     .factory('UserService',["$http",function($http){
-        return {
+        var service={
             isLoggedIn:false,
             session: function(){
                 return $http.get('/api/session').then(function(response){
-                    this.isLoggedIn=true;
+                    service.isLoggedIn=true;
                     return response;
                 },function(error){
-                    this.isLoggedIn=false;
+                    service.isLoggedIn=false;
 
                 });
             },
             login:function(user){
                 return $http.post('/api/login',user)
                     .then(function(response){
-                        this.isLoggedIn=true;
+                        service.isLoggedIn=true;
                         return response;
                     });
             }
         };
-        //return service;
+        return service;
     }]);
