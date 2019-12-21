@@ -8,8 +8,8 @@ angular.module('stockMarketApp',[])
         {name:'Fourth Stock',price:400,previous:200}
      ];
      //self.stockTemplate='stock.html';
-     self.getChange=function(stock){
-        return Math.ceil((
-          (stock.price-stock.previous)/stock.previous)*100);
-     };
+     //self.getChange=function(stock){
+     //   return Math.ceil((
+     //     (stock.price-stock.previous)/stock.previous)*100);
+     //};
     }]);

@@ -9,6 +9,6 @@ angular.module("stockMarketApp")
                         stock.previous)*100);
                 };
             },
-            scope:{stock:'='}
+            scope:{stockData:'='}
         };
     }]);
