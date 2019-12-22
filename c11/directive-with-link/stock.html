@@ -4,6 +4,11 @@
 
     Price:
     <span class="stock-price" ng-bind="stockData.price"></span>
+
     Percentage Change:
     <span class="stock-change" ng-bind="getChange(stockData)+'%'"></span>
+
+    <button ng-click="changeStock()">
+        Change Stock in Directive
+    </button>
 </div>

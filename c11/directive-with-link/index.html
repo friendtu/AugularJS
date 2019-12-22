@@ -8,6 +8,14 @@
         <div ng-repeat="s in mainCtrl.stocks">
             <div stock-widget stock-data="s"></div>
         </div>
+
+        <button ng-click="mainCtrl.changeAllStocks()">
+            Change all stocks from controller
+        </button>
+
+        <button ng-click="mainCtrl.changeFirstStock()">
+            Change the first stock from controller
+        </button>
     </div>
 
 
