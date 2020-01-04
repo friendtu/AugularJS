@@ -1,6 +1,6 @@
 <div class='stock-dash'>
     Name:
-    <span class='stock-name' ng-bind="stockData.name"></span>
+    <span class='stock-name' ng-bind="stockTitle"></span>
 
     Price:
     <span class="stock-price" ng-bind="stockData.price"></span>
@@ -10,5 +10,9 @@
 
     <button ng-click="changeStock()">
         Change Stock in Directive
+    </button>
+
+    <button ng-click="onSelect()">
+        Select me
     </button>
 </div>

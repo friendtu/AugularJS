@@ -15,7 +15,19 @@ angular.module("stockMarketApp")
                         previous: 200
                     };
                 };
+                $scope.onSelect=function() {
+                    console.log('click on Select ');
+                    $scope.whenSelect({
+                        stockName: $scope.stockData.name,
+                        stockPrice: $scope.stockData.price,
+                        stockPrevious: $scope.stockData.previous
+                    });
+                };
             },
-            scope:{stockData:'='}
+            scope:{
+                stockData:'=',
+                whenSelect: '&',
+                stockTitle:'@'
+            }
         };
     }]);

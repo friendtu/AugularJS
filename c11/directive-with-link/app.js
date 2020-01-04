@@ -21,4 +21,8 @@ angular.module('stockMarketApp',[])
      self.changeFirstStock=function() {
         self.stocks[0].name="Changed First Stock";
      };
+
+     self.onStockSelect=function(price,name) {
+        console.log('Selected Price ', price,'Name ',name);
+     }
     }]);
