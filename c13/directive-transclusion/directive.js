@@ -4,6 +4,7 @@ angular.module('stockMarketApp')
     return {
       templateUrl: 'stock.html',
       restrict: 'A',
+      transclude: true,
       scope: {
         stockData: '='
       },

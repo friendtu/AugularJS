@@ -1,9 +1,6 @@
 <!-- File: chapter13/directive-no-transclusion/stock.html -->
 <div class="stock-dash">
-  Name:
-  <span class="stock-name"
-        ng-bind="stockData.name">
-  </span>
+  <span ng-transclude></span>
   Price:
   <span class="stock-price"
         ng-bind="stockData.price | currency">
