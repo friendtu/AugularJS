@@ -38,6 +38,20 @@ angular.module('dynamicFormApp')
                 }
 
                 elementHtml+='>';
+
+                elementHtml += '<span ng-repeat="(key, text) in validators" '
+                    + ' ng-show="hasError(key)"'
+                    + ' ng-bind="text"></span>';
+                
+                elemnetHtml +='</div>';
+                $element.html(elementHtml);
+
+                return function($scope,$element,$attrs,formCtrl) {
+                    $scope.validators=angular.copy(presentValidationKeys);
+                    $scope.hasError=function(key) {
+                        return !!formCtrl[inputName]['$error'][key];
+                    }
+                };
             }
         };
     }]);
