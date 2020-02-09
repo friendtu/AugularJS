@@ -1,0 +1,26 @@
+<html>
+<head>
+    <title>Dynamic Form App</title>
+</head>
+
+<body ng-app="dynamicFormApp">
+    <div ng-controller='MainCtrl as mainCtrl'>
+        <form novalidate="" name="mainForm">
+            <form-element type="text" name="uname" bind-to="mainCtrl.username"
+                label='Username' required ng-minlength='5'>
+                <validation key="required">
+                    Please enter a Username
+                </validation>
+
+                <validation key='minlength'>
+                    Username must be at least 5 characters
+                </validation>
+            </form-element>
+
+            Username is {{mainCtrl.username}}
+
+            <button>Submit</button>
+        </form>
+    </div>
+</body>
+</html>
